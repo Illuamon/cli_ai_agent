@@ -1,17 +1,17 @@
 import os 
 
 def get_files_info(working_directory, directory="."):
-    full_path = os.path.join(working_directory, directory)
-
-    #check if desired dir is permitted to dig in for the ai
-    if os.path.abspath(full_path).startswith(os.path.abspath(working_directory)) == False:
-        return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
-    #check if the dir is really a dir
-    if os.path.isdir(full_path) == False:
-        return f'Error: "{directory}" is not a directory'
-
-    #build the output string 
     try:
+        full_path = os.path.join(working_directory, directory)
+
+        #check if desired dir is permitted to dig in for the ai
+        if os.path.abspath(full_path).startswith(os.path.abspath(working_directory)) == False:
+            return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
+        #check if the dir is really a dir
+        if os.path.isdir(full_path) == False:
+            return f'Error: "{directory}" is not a directory'
+
+        #build the output string 
         contents = os.listdir(full_path)
         output_list = []
         for item in contents:
